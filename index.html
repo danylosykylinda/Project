@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandSearch</title>
+    <style>
+        body {
+            background-color: #f6cc8ce9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #wrap {
+            text-align: center;
+            height: 100%;
+        }
+        .autocomplete-suggestions {
+            border: 1px solid #ccc;
+            background-color: #fbe9d8;
+            max-height: 60%;
+            overflow-y: auto;
+            position: absolute;
+            z-index: 100;
+            left: 75.2%;
+            float: right;
+            top: 11.5%;
+        }
+        .autocomplete-suggestion {
+            padding: 8px;
+            cursor: pointer;
+        }
+        .autocomplete-suggestion:hover,
+        .autocomplete-suggestion.active {
+            background-color: #e9e9e9;
+        }
+
+        #btn-execute-query {
+            background: #0096d6e9;
+            color: #ffffffe9;
+            font-family: serif;
+            text-align: center;
+            border: 10px solid, #0096d6e9;
+            border-left-width: 20px;
+            border-right-width: 20px;
+            cursor: pointer;
+        }
+
+        #wrap-hover:hover {
+            background: whitesmoke;
+            opacity: 0.8;
+        }
+
+        #autocomplete-input {
+        width: 50%;
+        height: 220px;
+        font-size: larger;
+        border-color: rgb(0, 69, 165);
+        border-width: 2px;
+        border-radius: 5px;
+        background: #ffe0b1e9;
+        }
+
+
+        #wrap-autocomplete {
+            position:static;
+        }
+
+        #wrap-searches {
+            position: relative;
+            text-align: left;
+            left: 25%;
+            max-width: 60%;
+        }
+        
+        summary::marker {
+            color: blue;
+        }
+
+        #other{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        #other p {
+            margin: 0 30px;
+            font-size: larger;
+        }
+
+        #other p a {
+            text-decoration: none;
+        }
+
+        .guesess {
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="wrap">
+    <h1>SandSearch</h1>
+    
+
+    <div id="wrap-autocomplete">
+    <textarea id="autocomplete-input" placeholder="ВВЕДІТЬ ВАШ ЗАПИТ:"></textarea>
+    <br>
+    <span id="autocomplete-suggestions" class="autocomplete-suggestions"></span>
+    </div>
+    <br>
+
+    <span id="wrap-hover">
+    <span id="btn-execute-query" onclick="processQuery();">ВИКОНАТИ ЗАПИТ</span>
+    </span>
+
+    <div id="wrap-searches"><br>
+    Google<input type="checkbox" checked id="google-checkbox">
+    Bing<input type="checkbox" id="bing-checkbox">
+
+    <details>
+    <summary>ПІДКАЗКИ:</summary>
+    <p class="guesess">Уведіть * через пробіл у полі, щоб побачити всі доступні параметри для запитів.</p>
+    <p class="guesess">"" пошук за точною фразою, що вказана в кавичках.</p>
+    <p class="guesess">- видаляє сторінки, що містять слово після мінусу в результатах пошуку.</p>
+    <p class="guesess">+ додати результати, що містять слово після плюсу в результатах пошуку.</p>
+    <p class="guesess">OR пошук за першою або другою умовою.</p>
+    </details>
+    </div>
+    </div>
+
+    <div id="other">
+        <p><a href="">Інструкція по використанню</a></p>
+        <p><a href="https://github.com/danylosykylinda">Про мене</a></p>
+        <p><a href="https://github.com/danylosykylinda/SandSearch">Проєкт на GitHub</a></p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
